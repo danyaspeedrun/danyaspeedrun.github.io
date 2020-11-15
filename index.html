@@ -1,1 +1,96 @@
-<p> Hello World! </p>
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Naroditsky Speedrun Episode Guide</title>
+  <meta name="description" content="Fan-made episode guide to GM Naroditsky's speedrun">
+  <meta name="author" content="SitePoint">
+  
+  <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #aaaaaa;
+}
+
+
+
+</style>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+  
+</head>
+
+<body>
+  
+  <h1>Naroditsky Speedrun Episode Guide</h1>
+
+  <table style="width:100%" id='the_table'>
+    <tr>
+        <th>Game #</th>
+        <th>Date</th>
+        <th>White</th>
+        <th>Black</th>
+        <th>Result</th>
+        <th>Opening</th>
+        <th>Vod</th>
+    </tr>
+  </table>
+
+</body>
+
+<script>
+  var guide_json = 0;
+  console.log('hi');
+  function insert_row(row,idx){
+    var tw = document.getElementById("the_table");
+    var white_strong = "";
+    if(row['Result'] == '1-0'){
+      console.log('white strong');
+      white_strong = "<strong>"
+    }
+
+    let black_strong = "";
+    if(row['Result'] == '0-1'){
+      console.log('black strong');
+      black_strong = "<strong>"
+    }
+
+    tmp_str = ""
+
+    //console.log(row['White']);
+    tmp_str += "<tr>"
+    tmp_str += `<td>${idx}</td>` // Game#
+    tmp_str += `<td>${row['UTCDate']}</td>`
+    tmp_str += `<td>${white_strong}<p>${row['White']}</p><p>${row['WhiteElo']}</p></td>`
+    tmp_str += `<td>${black_strong}<p>${row['Black']}</p><p>${row['BlackElo']}</p></td>`
+    tmp_str += `<td>${row['Result']}</td>`
+    tmp_str += `<td><a href=${row['ECOUrl']}  target="_blank" ><img src=${row['opening_thumbnail']}><p>${row['opening_name']}</p></a></td>`
+    tmp_str += `<td><a href=${row['vod_link_with_offset']} target="_blank" ><img src=${row['vod_thumb']} height=45%>${row['vod_link_with_offset']}</a></td>`
+    tmp_str += "</tr>"
+    tw.innerHTML += tmp_str
+  }
+
+  $.getJSON('https://danyaspeedrun.github.io/guide.json', function(data) {
+    guide_json = data
+    data.forEach(insert_row);
+  });
+</script>
+
+</html>
