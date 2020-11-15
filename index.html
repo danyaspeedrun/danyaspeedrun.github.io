@@ -34,6 +34,7 @@ tr:nth-child(even) {
   
   <h1>Naroditsky Speedrun Episode Guide</h1>
 
+  <p> Note: It appears that the native iOS app does not support timestamped vod links. If you have trouble with the vod links, try opening them in a new browser tab. </p>
   <table style="width:100%" id='the_table'>
     <tr>
         <th>Game #</th>
@@ -97,7 +98,7 @@ tr:nth-child(even) {
       console.log(hyperlinks);
       for( let anchor of hyperlinks ) anchor.addEventListener( 'click', onHyperlinkClickPreventAppOpen );
     }
-    document.getElementById("test_mobile").innerHTML = is_mobile;
+    document.getElementById("test_mobile").innerHTML = 'is_mobile: ' + is_mobile;
   });
 </script>
 <footer>
