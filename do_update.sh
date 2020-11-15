@@ -14,5 +14,5 @@ ipython ./BuildJson.py
 
 git add ./guide.json
 git commit -m "json update"
-git push
+GIT_SSH_COMMAND="ssh -i ~/.ssh/danyaspeedrun" git push 
 
