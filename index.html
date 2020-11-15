@@ -82,7 +82,7 @@ tr:nth-child(even) {
     tmp_str += `<td>${black_strong}<p>${row['Black']}</p><p>${row['BlackElo']}</p></td>`
     tmp_str += `<td>${row['Result']}</td>`
     tmp_str += `<td><a href=${row['ECOUrl']}  target="_blank" ><img src=${row['opening_thumbnail']}><p>${row['opening_name']}</p></a></td>`
-    tmp_str += `<td><a href=${row['vod_link_with_offset']} target="_blank" ><img src=${row['vod_thumb']} height=45%>${row['vod_link_with_offset']}</a></td>`
+    tmp_str += `<td><a href=${row['vod_link_with_offset']} target="_blank" ><div><img src=${row['vod_thumb']} width=50%></div>${row['vod_link_with_offset']}</a></td>`
     tmp_str += "</tr>"
     tw.innerHTML += tmp_str
   }
