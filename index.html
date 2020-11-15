@@ -7,7 +7,6 @@
   
   <title>Naroditsky Speedrun Episode Guide</title>
   <meta name="description" content="Fan-made episode guide to GM Naroditsky's speedrun">
-  <meta name="author" content="SitePoint">
   
   <style>
 table {
@@ -27,14 +26,8 @@ tr:nth-child(even) {
   background-color: #aaaaaa;
 }
 
-
-
-</style>
-  
+</style>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-  
 </head>
 
 <body>
@@ -62,13 +55,11 @@ tr:nth-child(even) {
     var tw = document.getElementById("the_table");
     var white_strong = "";
     if(row['Result'] == '1-0'){
-      console.log('white strong');
       white_strong = "<strong>"
     }
 
     let black_strong = "";
     if(row['Result'] == '0-1'){
-      console.log('black strong');
       black_strong = "<strong>"
     }
 
@@ -87,10 +78,13 @@ tr:nth-child(even) {
     tw.innerHTML += tmp_str
   }
 
-  $.getJSON('guide.json', function(data) {
+  $.getJSON('./guide.json', function(data) {
     guide_json = data
     data.forEach(insert_row);
   });
 </script>
-
+<footer>
+  <p>Author: bobert_____</p>
+  <p>Source code: <a href=https://github.com/danyaspeedrun/danyaspeedrun.github.io>https://github.com/danyaspeedrun/danyaspeedrun.github.io</a></p>
+</footer>
 </html>
