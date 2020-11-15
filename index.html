@@ -59,7 +59,13 @@ tr:nth-child(even) {
     }
 
 // https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device
-  var is_mobile = /Mobi/.test(navigator.userAgent)
+  var is_mobile = /Mobi/.test(navigator.userAgent) || [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod' ].includes(navigator.platform)  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
   console.log('is_mobile=' + is_mobile);
 
   var guide_json = 0;
