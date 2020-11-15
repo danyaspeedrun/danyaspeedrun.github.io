@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
 import chess
 import chess.pgn
 import json
@@ -13,8 +10,6 @@ from glob import glob
 from bs4 import BeautifulSoup
 import requests as r
 
-
-# In[ ]:
 
 
 game_files = glob("./games/**/*.json",recursive=True)
@@ -46,9 +41,6 @@ pgn_df = pgn_df.apply(extract_openings, axis=1)
 pgn_df
 
 
-# In[ ]:
-
-
 tmp = {}
 tmp['id'] = []
 tmp['vod_start_posix'] = []
@@ -71,24 +63,14 @@ vod_df['vod_end'] = pd.to_datetime(vod_df['vod_end_posix'], unit='s')
 vod_df = vod_df.sort_values('vod_start')
 vod_df
 
-
-# In[ ]:
-
-
 joined_df = pd.merge_asof(pgn_df,vod_df, direction='backward', left_on='dt', right_on='vod_start')
 joined_df['vod_offset'] = (joined_df['dt']-joined_df['vod_start']).dt.total_seconds().astype('int')
 joined_df['vod_link_with_offset'] = joined_df['vod_url'] + "?t=" + joined_df['vod_offset'].astype('str') + "s"
-joined_df
-
-
-# In[ ]:
+joined_df = joined_df.query('vod_end > dt')
 
 
 with open('guide.json','w') as f:
     f.write(joined_df.to_json(orient='records'))
-
-
-# In[ ]:
 
 
 
