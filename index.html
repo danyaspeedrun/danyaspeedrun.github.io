@@ -87,7 +87,7 @@ tr:nth-child(even) {
     tw.innerHTML += tmp_str
   }
 
-  $.getJSON('https://danyaspeedrun.github.io/guide.json', function(data) {
+  $.getJSON('guide.json', function(data) {
     guide_json = data
     data.forEach(insert_row);
   });
