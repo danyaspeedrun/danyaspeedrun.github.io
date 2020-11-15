@@ -97,11 +97,12 @@ tr:nth-child(even) {
       console.log(hyperlinks);
       for( let anchor of hyperlinks ) anchor.addEventListener( 'click', onHyperlinkClickPreventAppOpen );
     }
-
+    document.getElementById("test_mobile").innerHTML = is_mobile;
   });
 </script>
 <footer>
   <p>Author: bobert_____</p>
   <p>Source code: <a href=https://github.com/danyaspeedrun/danyaspeedrun.github.io>https://github.com/danyaspeedrun/danyaspeedrun.github.io</a></p>
+  <p id="test_mobile"></p>
 </footer>
 </html>
