@@ -50,23 +50,23 @@ tr:nth-child(even) {
 </body>
 
 <script>
-    function onHyperlinkClickPreventAppOpen( ev ) {
-        const el = ev.target;
-        if( el.href && ( el.href.startsWith( "http:" ) || ( el.href.startsWith( "https:" ) ))) {
-            ev.preventDefault();
-            window.document.location.assign( el.href );
-        }
-    }
+    // function onHyperlinkClickPreventAppOpen( ev ) {
+    //     const el = ev.target;
+    //     if( el.href && ( el.href.startsWith( "http:" ) || ( el.href.startsWith( "https:" ) ))) {
+    //         ev.preventDefault();
+    //         window.document.location.assign( el.href );
+    //     }
+    // }
 
 // https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device
-  var is_mobile = /Mobi/.test(navigator.userAgent) || [
-    'iPad Simulator',
-    'iPhone Simulator',
-    'iPod Simulator',
-    'iPad',
-    'iPhone',
-    'iPod' ].includes(navigator.platform)  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-  console.log('is_mobile=' + is_mobile);
+  // var is_mobile = /Mobi/.test(navigator.userAgent) || [
+  //   'iPad Simulator',
+  //   'iPhone Simulator',
+  //   'iPod Simulator',
+  //   'iPad',
+  //   'iPhone',
+  //   'iPod' ].includes(navigator.platform)  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  // console.log('is_mobile=' + is_mobile);
 
   var guide_json = 0;
   console.log('hi');
@@ -99,17 +99,17 @@ tr:nth-child(even) {
     guide_json = data
     data.forEach(insert_row);
 //https://stackoverflow.com/questions/59318993/how-can-i-force-open-external-link-in-browser-instead-of-app
-    if(is_mobile){
-      const hyperlinks = document.querySelectorAll( 'a:link' );
-      console.log(hyperlinks);
-      for( let anchor of hyperlinks ) anchor.addEventListener( 'click', onHyperlinkClickPreventAppOpen );
-    }
+    // if(is_mobile){
+    //   const hyperlinks = document.querySelectorAll( 'a:link' );
+    //   console.log(hyperlinks);
+    //   for( let anchor of hyperlinks ) anchor.addEventListener( 'click', onHyperlinkClickPreventAppOpen );
+    // }
     document.getElementById("test_mobile").innerHTML = 'is_mobile: ' + is_mobile;
   });
 </script>
 <footer>
   <p>Author: bobert_____</p>
   <p>Source code: <a href=https://github.com/danyaspeedrun/danyaspeedrun.github.io>https://github.com/danyaspeedrun/danyaspeedrun.github.io</a></p>
-  <p id="test_mobile"></p>
+  <!-- <p id="test_mobile"></p> -->
 </footer>
 </html>
