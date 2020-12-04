@@ -63,6 +63,8 @@ vod_df['vod_end'] = pd.to_datetime(vod_df['vod_end_posix'], unit='s')
 vod_df = vod_df.sort_values('vod_start')
 vod_df
 
+
+pgn_df = pgn_df.sort_values('dt')
 joined_df = pd.merge_asof(pgn_df,vod_df, direction='backward', left_on='dt', right_on='vod_start')
 joined_df['vod_offset'] = (joined_df['dt']-joined_df['vod_start']).dt.total_seconds().astype('int')
 joined_df['vod_link_with_offset'] = joined_df['vod_url'] + "?t=" + joined_df['vod_offset'].astype('str') + "s"
